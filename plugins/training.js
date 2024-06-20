@@ -79,8 +79,8 @@
             const characterDelayTime = 0;
 
             // Calculate a random delay time for names within a shorter range (0.5 to 2 seconds)
-            const minDelay = 500; // 0.5 seconds in milliseconds
-            const maxDelay = 500; // 2 seconds in milliseconds
+            const minDelay = 0; // 0.5 seconds in milliseconds
+            const maxDelay = 0; // 2 seconds in milliseconds
             const nameDelayTime = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
             // Combine delays if both types of matches are found
