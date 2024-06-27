@@ -13,7 +13,7 @@ let handler = async (m, { conn, text, participants, isAdmin, isOwner, groupMetad
 
 handler.help = ['tagall']
 handler.tags = ['group']
-handler.command = ['@']
+handler.command = ['@','tag']
 handler.admin = true
 handler.group = true
 
