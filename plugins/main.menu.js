@@ -24,6 +24,9 @@ const menus = {
     ╰──────────⳹`
 };
 
+// Define botname here
+const botname = "Ｎｉｎｏ－Ｂｏｔ";
+
 const handler = async (m, { conn, command, text, args, usedPrefix }) => {
     try {
         let glb = global.db.data.users;
@@ -59,7 +62,7 @@ const handler = async (m, { conn, command, text, args, usedPrefix }) => {
 
         global.fcontact = { key: { fromMe: false, participant: `0@s.whatsapp.net`, remoteJid: 'status@broadcast' }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}};
         const infoText = `
-        ${botname} あ⁩ 」\n
+        ${botname} 
         Hii ${name} Senpai
 
         *${ucpn}* 
@@ -76,7 +79,7 @@ const handler = async (m, { conn, command, text, args, usedPrefix }) => {
     `;
 
         // React to the message
-        await conn.sendMessage(m.chat, { react: { text: '📜', key: m.key } });
+        await conn.sendMessage(m.chat, { react: { text: '🌀', key: m.key } });
 
         const { result, key, timeout } = await conn.sendMessage(m.chat, { video: { url: menuvid }, caption: infoText.trim(), gifPlayback: true, gifAttribution: 0 }, { quoted: fcontact });
 

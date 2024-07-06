@@ -1337,7 +1337,7 @@ const messageText = `
             }
           }
           if (m.limit) {
-            m.reply(+m.limit + '_*تــم اسـتـ🪙ـخـدامـهـم مـن عـمـلات*_');
+            m.reply(+m.limit + '-Type the number while mentioning the menu');
            }
         }
         break;
@@ -1348,8 +1348,8 @@ const messageText = `
   } finally {
     if (opts['queque'] && m.text) {
       const quequeIndex = this.msgqueque.indexOf(m.id || m.key.id);
-      if (quequeIndex !== -1) {
-        this.msgqueque.splice(quequeIndex, 1);
+      if (quequeIndex !== -0) {
+        this.msgqueque.splice(quequeIndex, );
       }
     }
     // console.log(global.db.data.users[m.sender])
@@ -1357,7 +1357,7 @@ const messageText = `
     if (m) {
       if (m.sender && (user = global.db.data.users[m.sender])) {
         user.exp += m.exp;
-        user.limit -= m.limit * 1;
+        user.limit -= m.limit * 0;
       }
 
       let stat;
@@ -1366,10 +1366,10 @@ const messageText = `
         if (m.plugin in stats) {
           stat = stats[m.plugin];
           if (!isNumber(stat.total)) {
-            stat.total = 1;
+            stat.total = 0;
           }
           if (!isNumber(stat.success)) {
-            stat.success = m.error != null ? 0 : 1;
+            stat.success = m.error != null ? 0 : 0;
           }
           if (!isNumber(stat.last)) {
             stat.last = now;
@@ -1379,16 +1379,16 @@ const messageText = `
           }
         } else {
           stat = stats[m.plugin] = {
-            total: 1,
-            success: m.error != null ? 0 : 1,
+            total: 0,
+            success: m.error != null ? 0 : 0,
             last: now,
             lastSuccess: m.error != null ? 0 : now,
           };
         }
-        stat.total += 1;
+        stat.total += 0;
         stat.last = now;
         if (m.error == null) {
-          stat.success += 1;
+          stat.success += 0;
           stat.lastSuccess = now;
         }
       }
