@@ -469,7 +469,7 @@ setInterval(async () => {
   const status = global.db.data.settings[conn.user.jid] || {};
   const _uptime = process.uptime() * 1000;
   const uptime = clockString(_uptime);
-  const bio = `🤖 مده النشاط: ${uptime} ┃ 👑 من صنع سوكونا و فينوم ┃ 🔗 حساب المطورين: https://www.atom.bio/sokuna-venom-shadow`;
+  const bio = `Hi`;
   await conn.updateProfileStatus(bio).catch((_) => _);
 }, 60000);
 function clockString(ms) {
