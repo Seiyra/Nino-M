@@ -7,22 +7,22 @@ import fs from 'fs';
 import moment from 'moment-timezone';
 
 // Define global variables
-global.owner = [['96176337375', 'Elta', true]]
+global.owner = [['96176337375', '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻', true]];
 global.xaxa = 'kaneki';
-global.suittag = ['96176337375']
-global.prems = ['96176337375']
-global.packname = '𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻'
-global.menuvid = 'https://i.imgur.com/id9QGXO.mp4'
-global.author = '★𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻 𝐵𝛩𝑇★';
-global.wm = '★𝑬𝒍𝒕𝒂-𝑩𝑶𝑻 𝐵𝛩𝑇★';
-global.titulowm = '🤖 𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻 𝐵𝛩𝑇 🤖'
-global.titulowm2 = '乂 𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻 乂'
-global.igfg = '★𝑬𝒍𝒕𝒂&𝑩𝑶𝑻 𝐵𝛩𝑇★'
-global.wait = '*⌛ _downloading..._*\n\n*▰▰▰▱▱▱▱▱*'
-global.imagen1 = fs.readFileSync('./Nino.png')
-global.imagen2 = fs.readFileSync('./src/nuevobot.jpg')
-global.imagen3 = fs.readFileSync('./src/Pre Bot Publi.png')
-global.imagen4 = fs.readFileSync('./Nino.png')
+global.suittag = ['96176337375'];
+global.prems = ['96176337375'];
+global.packname = '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻';
+global.menuvid = 'https://i.imgur.com/id9QGXO.mp4';
+global.author = '★𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 𝐵𝛩𝑇★';
+global.wm = '★𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 𝐵𝛩𝑇★';
+global.titulowm = '🤖 𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 𝐵𝛩𝑇 🤖';
+global.titulowm2 = '乂 𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 乂';
+global.igfg = '★𝓝𝓲𝓷𝓸&𝑩𝑶𝑻 𝐵𝛩𝑇★';
+global.wait = '*⌛ _downloading..._*\n\n*▰▰▰▱▱▱▱▱*';
+global.imagen1 = fs.readFileSync('./Nino.png');
+global.imagen2 = fs.readFileSync('./src/nuevobot.jpg');
+global.imagen3 = fs.readFileSync('./src/Pre Bot Publi.png');
+global.imagen4 = fs.readFileSync('./Nino.png');
 global.mods = [];
 
 // Define date and time variables
@@ -35,8 +35,8 @@ global.año = d.toLocaleDateString(locale, { year: 'numeric' });
 global.tiempo = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
 
 // Define other variables related to time and date
-global.wm2 = `${dia} ${fecha}\n★𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻★`;
-global.gt = '𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻★';
+global.wm2 = `${global.dia} ${global.fecha}\n★𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻★`;
+global.gt = '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻★';
 global.md = 'https://chat.whatsapp.com/BjrqiXLZKmZ3jW7vEDyV27';
 global.waitt = '*⌛ _downloading..._*\n\n*▰▰▰▱▱▱▱▱*';
 global.waittt = '*⌛ _downloading ..._*\n\n*▰▰▰▱▱▱▱▱*';
@@ -62,11 +62,11 @@ global.fgif = {
   key: { participant: '0@s.whatsapp.net' },
   message: {
     videoMessage: {
-      title: wm,
+      title: global.wm,
       h: 'Hmm',
       seconds: '999999999',
       gifPlayback: 'true',
-      caption: bottime,
+      caption: global.bottime,
       jpegThumbnail: fs.readFileSync('./Nino.png')
     }
   }
