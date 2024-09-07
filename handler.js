@@ -1337,7 +1337,7 @@ const messageText = `
             }
           }
           if (m.limit) {
-            m.reply(+m.limit + '-Type the number while mentioning the menu');
+            m.reply(+m.limit + '');
            }
         }
         break;
@@ -1452,12 +1452,12 @@ export async function participantsUpdate({id, participants, action}) {
     case 'promote':
     case 'daradmin':
     case 'darpoder':
-      text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```');
+      text = (chat.sPromote || this.spromote || conn.spromote || '@user ```اصبح مشرفاً الان…```');
     case 'demote':
     case 'quitarpoder':
     case 'quitaradmin':
       if (!text) {
-        text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```');
+        text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```لم يعد مشرفاً بعد الأن…!```');
       }
       text = text.replace('@user', '@' + participants[0].split('@')[0]);
       if (chat.detect) {

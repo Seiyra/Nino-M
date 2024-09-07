@@ -7,13 +7,21 @@ let handler = async (m, { conn, text, participants }) => {
         return conn.reply(m.chat, 'This command can only be used by group admins.', m);
     }
 
+    // If the message is a reply, use the content of the replied message
+    let messageText = text; // Default to the user's input
+    if (m.quoted) { // Check if the command is used as a reply to another message
+        messageText = m.quoted.text || 'ضع رسالة'; // Use the replied message's text, or default to 'ضع رسالة' if none
+    } else {
+        messageText = text || 'ضع رسالة'; // If no reply, use the provided text or default
+    }
+
     // Create mentions array for all participants
     let mentions = participants.map(p => p.id);
 
     // Create the message content
     const messageContent = {
         extendedTextMessage: {
-            text: text || 'ضع رسالة',
+            text: messageText,
             contextInfo: {
                 mentionedJid: mentions
             }

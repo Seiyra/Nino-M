@@ -7,23 +7,32 @@ import os from "os";
 
 // Define menus
 const menus = {
-    gamemenu: `
-    ✦ ───『 *Games* 』─── ⚝
-    🎮 *.ص* Ⓛ (For images)
-    🎮 *.س* (For questions)
-    🎮 *.تع* (تعداد)
-    🎮 *.كت* (For writing)
-    🎮 *.<كت<رقم بالعربي او انجليزي* (For writing a larger number)
-    🎮 *.مكت تبدا مسابقة كت*
-    🎮 *.سكت تنهي مسابقة كت*
+    adminsmenu: `
+    ✦ ───『 *المشرفين* 』─── 👾
+    👾 *.ترقية* (ترقية مستخدم)
+    👾 *.طرد* (طرد مستخدم)
+    👾 *.حذف* (إزالة أو حذف)
+    👾 *.رابط* (عرض رابط المجموعة)
+    👾 *.مكت* (بدء مسابقة الكتابة)
+    👾 *.سكت* (إنهاء مسابقة الكتابة)
+    👾 *.مخفي* (إرسال رسالة مخفية)
+    👾 ❭↜ 〚.تخفيض〛 (تخفيض الرتبة)
     ╰──────────⳹`,
-    othersmenu: `
-    ✦ ───『 *Others* 』─── ⚝
-    🎯 *.مخفي* (For hidden)
-    🎯 *.طرد* (For kicking)
-    🎯 *.ملصق* (For stickers)
-    🎯 *.ملصق* <input|input>
-    🎯 *.رابط* (For the group link)
+
+    gamemenu: `
+    ✦ ───『 *العاب* 』─── ⚝
+    🎯 *.كت* (لإخفاء شيء)
+    🎯 *.ص* (للطرد)
+    🎯 *.ملصق* <اسم|صانع>
+    🎯 *.توب* (عرض القائمة العلوية)
+    🎯 *.اكس-او* (لعبة XO)
+    ╰──────────⳹`,
+
+    groupmenu: `
+    ✦ ───『 *قائمة القروب* 』─── ⚝
+    🔒 *قفل* (قفل المجموعة)
+    🔓 *فتح* (فتح المجموعة)
+    📸 *تغيير صورة* (تغيير صورة المجموعة)
     ╰──────────⳹`
 };
 
@@ -76,20 +85,20 @@ const handler = async (m, { conn, command, text, args, usedPrefix }) => {
 
         const infoText = `
         ${botname} 
-        Hii ${name} Senpai
+        Hi ${name}, Senpai!
 
         *${ucpn}* 
 
         乂───『 *U S E R*』───乂
-        *  *Rank:* *User.*
-        ⛥ *Owner:* *Elta/+96176337375*
+        ⛥ *Rank:* User
+        ⛥ *Owner:* Elta/+96176337375
         ╰──────────⳹
 
         ╭───────⳹
-        │ *1.* Games Menu
-        │ *2.* Others Menu
+        │ *1.* قائمة المشرفين
+        │ *2.* قائمة الالعاب
         ╰───────⳹
-    `;
+        `;
 
         // React to the message
         await conn.sendMessage(m.chat, { react: { text: '🌀', key: m.key } });
@@ -124,8 +133,9 @@ handler.before = async (m, { conn }) => {
         };
 
         const menuOptions = {
-            "1": "gamemenu",
-            "2": "othersmenu"
+            "1": "adminsmenu",
+            "2": "gamemenu",
+            "3": "groupmenu"
         };
 
         if (menuOptions[choice]) {
@@ -145,7 +155,7 @@ handler.before = async (m, { conn }) => {
 // Register the handler
 handler.help = ["menu"];
 handler.tags = ["main"];
-handler.command = ['menu','اوامر'];
+handler.command = ['menu', 'اوامر'];
 handler.limit = true;
 
 export default handler;
@@ -155,9 +165,6 @@ function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-const more = String.fromCharCode(8206);
-const readMore = more.repeat(4001);
-
 function clockString(ms) {
     let h = isNaN(ms) ? "--" : Math.floor(ms / 3600000);
     let m = isNaN(ms) ? "--" : Math.floor(ms / 60000) % 60;
@@ -165,22 +172,10 @@ function clockString(ms) {
     return [h, " H ", m, " M ", s, " S "].map(v => v.toString().padStart(2, 0)).join("");
 }
 
-function clockStringP(ms) {
-    let ye = isNaN(ms) ? "--" : Math.floor(ms / 31104000000) % 10;
-    let mo = isNaN(ms) ? "--" : Math.floor(ms / 2592000000) % 12;
-    let d = isNaN(ms) ? "--" : Math.floor(ms / 86400000) % 30;
-    let h = isNaN(ms) ? "--" : Math.floor(ms / 3600000) % 24;
-    let m = isNaN(ms) ? "--" : Math.floor(ms / 60000) % 60;
-    let s = isNaN(ms) ? "--" : Math.floor(ms / 1000) % 60;
-    return [ye, " *Years 🗓️*\n", mo, " *Month 🌙*\n", d, " *Days ☀️*\n", h, " *Hours 🕐*\n", m, " *Minute ⏰*\n", s, " *Second ⏱️*"].map(v => v.toString().padStart(2, 0)).join("");
-}
-
 function ucapan() {
     const time = moment.tz("Asia/Kolkata").format("HH");
-    let res = "Good morning ☀️";
-    if (time >= 4 && time < 10) res = "Good Morning 🌄";
-    else if (time >= 10 && time < 15) res = "Good Afternoon ☀️";
-    else if (time >= 15 && time < 18) res = "Good Afternoon 🌇";
-    else if (time >= 18) res = "Good Night 🌙";
-    return res;
+    if (time >= 4 && time < 10) return "Good Morning 🌄";
+    if (time >= 10 && time < 15) return "Good Afternoon ☀️";
+    if (time >= 15 && time < 18) return "Good Afternoon 🌇";
+    return "Good Night 🌙";
 }
