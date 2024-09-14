@@ -1,0 +1,12 @@
+import mongoose from 'mongoose';
+
+// Define the schema and model
+const medoBk9Schema = new mongoose.Schema({
+    groupId: String,
+    userId: String,
+    bk9: String
+});
+
+const BK9 = mongoose.models.BK9 || mongoose.model('BK9', medoBk9Schema);
+
+export default BK9;

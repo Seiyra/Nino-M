@@ -39,7 +39,7 @@ args: args.slice(1),
 })
 let p = fork()
 p.on('message', data => {
-console.log('╭--------- - - - ✓\n┆ ✅ TIEMPO DE ACTIVIDAD ACTUALIZADA\n╰-------------------- - - -', data)
+console.log('╭--------- - - - ✓\n┆ ✅ Runinng\n╰-------------------- - - -', data)
 switch (data) {
 case 'reset':
 p.process.kill()

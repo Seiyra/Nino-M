@@ -1,5 +1,3 @@
-import { UserProfile, UserMessage } from './models.js';
-import { medoBK9 } from './profiles.js'; // Import the model from the appropriate file
 import mongoose from 'mongoose';
 
 // MongoDB URI and Schema setup
@@ -8,7 +6,7 @@ mongoose.connect(medoUri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(medoError => console.error('Error connecting to MongoDB:', medoError));
 
-// Define the schema and model
+// Define the BK9 model
 const medoBk9Schema = new mongoose.Schema({
     groupId: String,
     userId: String,
@@ -16,187 +14,209 @@ const medoBk9Schema = new mongoose.Schema({
 });
 const medoBK9 = mongoose.model('BK9', medoBk9Schema);
 
-// Combined command handler function
-let combinedHandler = async function (context, { conn, text, command, isAdmin }) {
+// Command handler functions
+async function handleTitlesCommand(medoContext) {
+    if (!medoContext.isGroup) {
+        medoContext.reply('هذا الأمر يعمل فقط في المجموعات');
+        return;
+    }
+
+    const groupMetadata = await medoContext.conn.groupMetadata(medoContext.chat);
+    const groupAdmins = groupMetadata.participants.filter(participant => participant.admin !== null).map(admin => admin.id);
+
+    if (!groupAdmins.includes(medoContext.sender)) {
+        medoContext.reply('هذا الأمر يعمل فقط مع الإداريين');
+        return;
+    }
+
+    const medoTitles = await medoBK9.find({ groupId: medoContext.chat });
+    if (medoTitles.length === 0) {
+        medoContext.reply('لا يوجد ألقاب مسجلة حاليا ┇');
+    } else {
+        const titleCounts = medoTitles.reduce((acc, medoTitle) => {
+            acc[medoTitle.bk9] = (acc[medoTitle.bk9] || 0) + 1;
+            return acc;
+        }, {});
+
+        let medoTitleList = '';
+        Object.entries(titleCounts).forEach(([medoTitle, medoCount], medoIndex) => {
+            medoTitleList += `${medoIndex + 1} ┇ اللقب: ${medoTitle} ┇ عدد الأشخاص: ${medoCount}\n`;
+        });
+
+        medoContext.reply(`┇ عدد الألقاب المسجلة: ${Object.keys(titleCounts).length}\n\n ┇الألقاب المسجلة:\n\n${medoTitleList}`);
+    }
+}
+
+async function handleRegisterCommand(medoContext) {
+    if (!medoContext.isGroup) {
+        medoContext.reply('هذا الأمر يعمل فقط في المجموعات');
+        return;
+    }
+
+    const groupMetadata = await medoContext.conn.groupMetadata(medoContext.chat);
+    const groupAdmins = groupMetadata.participants.filter(participant => participant.admin !== null).map(admin => admin.id);
+
+    if (!groupAdmins.includes(medoContext.sender)) {
+        medoContext.reply('هذا الأمر يعمل فقط مع الإداريين');
+        return;
+    }
+
+    if (!medoContext.quoted && (!medoContext.mentionedJid || medoContext.mentionedJid.length === 0)) {
+        medoContext.reply('منشن احد او رد على رسالته واكتب اللقب الذي تريد تسجيله');
+        return;
+    }
+
+    let medoUserId;
+    if (medoContext.quoted) {
+        medoUserId = medoContext.quoted.sender.replace('@s.whatsapp.net', '');
+    } else {
+        medoUserId = medoContext.mentionedJid[0].replace('@s.whatsapp.net', '');
+    }
+
+    const medoTextParts = medoContext.text.trim().split(' ').filter(medoPart => medoPart.trim() !== '');
+    const medoTitle = medoTextParts.slice(1).join(' ');
+
+    if (!/\S/.test(medoTitle)) {
+        medoContext.reply('مثال:\n .تسجيل @العضو جيرايا');
+        return;
+    }
+
+    const medoExistingTitle = await medoBK9.findOne({ bk9: medoTitle, groupId: medoContext.chat });
+    if (medoExistingTitle) {
+        const medoExistingUser = await medoContext.conn.getName(medoExistingTitle.userId + '@s.whatsapp.net');
+        medoContext.reply(`اللقب ${medoTitle} مأخوذ من طرف @${medoExistingUser}`);
+    } else {
+        await medoBK9.findOneAndUpdate(
+            { userId: medoUserId, groupId: medoContext.chat },
+            { bk9: medoTitle },
+            { upsert: true }
+        );
+        medoContext.reply(`┇ تم تسجيله بلقب ${medoTitle} بنجاح`);
+    }
+}
+
+async function handleDeleteTitleCommand(medoContext) {
+    if (!medoContext.isGroup) {
+        medoContext.reply('هذا الأمر يعمل فقط في المجموعات');
+        return;
+    }
+
+    const groupMetadata = await medoContext.conn.groupMetadata(medoContext.chat);
+    const groupAdmins = groupMetadata.participants.filter(participant => participant.admin !== null).map(admin => admin.id);
+
+    if (!groupAdmins.includes(medoContext.sender)) {
+        medoContext.reply('هذا الأمر يعمل فقط مع الإداريين');
+        return;
+    }
+
+    const medoTextParts = medoContext.text.trim().split(' ').filter(medoPart => medoPart.trim() !== '');
+    const medoDeleteTitle = medoTextParts.slice(1).join(' ');
+
+    if (!/\S/.test(medoDeleteTitle)) {
+        medoContext.reply('اكتب اللقب الذي تريد حذفه');
+        return;
+    }
+
+    const medoDeleteResult = await medoBK9.deleteOne({ bk9: medoDeleteTitle, groupId: medoContext.chat });
+
+    if (medoDeleteResult.deletedCount > 0) {
+        medoContext.reply(`┇ تم حذف اللقب ${medoDeleteTitle} بنجاح`);
+    } else {
+        medoContext.reply(`اللقب ${medoDeleteTitle} غير مسجل لاحد اساسا`);
+    }
+}
+
+async function handleMyTitleCommand(medoContext) {
+    const medoSenderId = medoContext.sender.replace('@s.whatsapp.net', '');
+    const medoUserTitle = await medoBK9.findOne({ userId: medoSenderId, groupId: medoContext.chat });
+
+    medoUserTitle && medoUserTitle.bk9
+        ? medoContext.reply(`┇ لقبك هو : ${medoUserTitle.bk9}`)
+        : medoContext.reply('┇ لم يتم تسجيلك بعد');
+}
+
+async function handleGetTitleCommand(medoContext) {
+    let medoUserId;
+
+    if (medoContext.quoted) {
+        // If the message is a reply, get the sender of the quoted message
+        medoUserId = medoContext.quoted.sender.replace('@s.whatsapp.net', '');
+    } else if (medoContext.mentionedJid && medoContext.mentionedJid.length > 0) {
+        // If someone is tagged, use the first mentioned user
+        medoUserId = medoContext.mentionedJid[0].replace('@s.whatsapp.net', '');
+    } else {
+        medoContext.reply('منشن احد او رد على رسالته لمعرفة لقبه');
+        return;
+    }
+
+    const medoQuotedUserTitle = await medoBK9.findOne({ userId: medoUserId, groupId: medoContext.chat });
+
+    if (medoQuotedUserTitle) {
+        const medoQuotedUserName = await medoContext.conn.getName(medoUserId + '@s.whatsapp.net');
+        medoContext.reply(`┇ لقب ${medoQuotedUserName} هو : ${medoQuotedUserTitle.bk9}`);
+    } else {
+        medoContext.reply('┇ لم يتم تسجيله بعد');
+    }
+}
+
+async function handleCheckTitleCommand(medoContext) {
+    const medoTextParts = medoContext.text.trim().split(' ').filter(medoPart => medoPart.trim() !== '');
+
+    // Ensure there is a title provided after the command
+    if (medoTextParts.length < 2) {
+        medoContext.reply('اكتب لقب للتحقق منه');
+        return;
+    }
+
+    const medoCheckTitle = medoTextParts.slice(1).join(' ').trim(); // Extract the title from the command text
+    const medoCheckResult = await medoBK9.findOne({ bk9: medoCheckTitle, groupId: medoContext.chat });
+
+    if (medoCheckResult) {
+        const medoCheckUser = await medoContext.conn.getName(medoCheckResult.userId + '@s.whatsapp.net');
+        medoContext.reply(`اللقب ${medoCheckTitle} مأخوذ من طرف @${medoCheckUser}`);
+    } else {
+        medoContext.reply(`اللقب ${medoCheckTitle} متوفر`);
+    }
+}
+
+// Main handler function
+let medoHandler = async function (medoContext, { conn: medoConn, text: medoText, command: medoCommand }) {
     try {
-        // Profile commands
-        if (command === 'بروفايل') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
+        const groupMetadata = await medoConn.groupMetadata(medoContext.chat);
+        const groupAdmins = groupMetadata.participants.filter(participant => participant.admin !== null).map(admin => admin.id);
+        const isAdmin = groupAdmins.includes(medoContext.sender);
+        medoContext.isAdmin = isAdmin;
 
-            const userId = context.sender.split('@')[0];
-            const profile = await UserProfile.findOne({ groupId: context.chat, userId });
-            const messageCountDoc = await UserMessage.findOne({ groupId: context.chat, userId });
-            const titleDoc = await medoBK9.findOne({ userId, groupId: context.chat });
-
-            if (profile) {
-                const title = titleDoc ? titleDoc.bk9 : 'لم يتم تعيين لقب';
-                const messageCount = messageCountDoc ? messageCountDoc.messageCount : 0;
-                context.reply(`┇ لقبك: ${title}\n┇ عدد الرسائل: ${messageCount}`);
-            } else {
-                context.reply('┇ لم يتم إنشاء ملفك الشخصي بعد.');
-            }
-        } else if (command === 'ملف_الاعضاء') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
-
-            if (!isAdmin) {
-                context.reply('هذا الأمر متاح فقط للإداريين');
-                return;
-            }
-
-            const profiles = await UserProfile.find({ groupId: context.chat });
-            const messageCounts = await UserMessage.find({ groupId: context.chat });
-            const titles = await medoBK9.find({ groupId: context.chat });
-
-            let profileList = '';
-            profiles.forEach(profile => {
-                const messageCount = messageCounts.find(count => count.userId === profile.userId)?.messageCount || 0;
-                const title = titles.find(t => t.userId === profile.userId)?.bk9 || 'بدون لقب';
-                profileList += `┇ ${title} - عدد الرسائل: ${messageCount}\n`;
-            });
-
-            context.reply(`┇ ملفات الأعضاء:\n\n${profileList || 'لا توجد بيانات للأعضاء.'}`);
-        } else if (command === 'إنشاء_ملف') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
-
-            const [_, ...titleParts] = text.split(' ');
-            const title = titleParts.join(' ');
-            const userId = context.sender.split('@')[0];
-
-            let profile = await UserProfile.findOne({ groupId: context.chat, userId });
-
-            if (profile) {
-                profile.لقب = title;
-                await profile.save();
-                context.reply('تم تحديث ملفك الشخصي بنجاح.');
-            } else {
-                profile = new UserProfile({ groupId: context.chat, userId, لقب: title });
-                await profile.save();
-                context.reply('تم إنشاء ملفك الشخصي بنجاح.');
-            }
-        }
-        // BK9 commands
-        else if (command === 'الألقاب') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
-            if (!isAdmin) {
-                context.reply('هذا الأمر يعمل فقط مع الإداريين');
-                return;
-            }
-            const titles = await medoBK9.find({ groupId: context.chat });
-            if (titles.length === 0) {
-                context.reply('لا يوجد ألقاب مسجلة حاليا ┇');
-            } else {
-                let titleList = '';
-                titles.forEach((title, index) => {
-                    titleList += `${index + 1} ┇ اللقب ${title.bk9}\n`;
-                });
-                context.reply(`┇ عدد الألقاب المسجلة: ${titles.length}\n\n ┇الألقاب المسجلة:\n\n${titleList}`);
-            }
-        } else if (command === 'تسجيل') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
-            if (!isAdmin) {
-                context.reply('هذا الأمر يعمل فقط مع الإداريين');
-                return;
-            }
-            if (!context.quoted && (!context.mentionedJid || context.mentionedJid.length === 0)) {
-                context.reply('منشن احد او رد على رسالته واكتب اللقب الذي تريد تسجيله');
-                return;
-            }
-
-            let userId;
-            if (context.quoted) {
-                userId = context.quoted.sender.replace('@s.whatsapp.net', '');
-            } else {
-                userId = context.mentionedJid[0].replace('@s.whatsapp.net', '');
-            }
-
-            const title = text.trim().split(' ').slice(1).join(' ');
-
-            if (!/\S/.test(title)) {
-                context.reply('مثال:\n .تسجيل @العضو جيرايا');
-                return;
-            }
-
-            const existingTitle = await medoBK9.findOne({ bk9: title, groupId: context.chat });
-            if (existingTitle) {
-                const existingUser = await conn.getName(existingTitle.userId + '@s.whatsapp.net');
-                context.reply(`اللقب ${title} مأخوذ من طرف @${existingUser}`);
-            } else {
-                await medoBK9.findOneAndUpdate(
-                    { userId, groupId: context.chat },
-                    { bk9: title },
-                    { upsert: true }
-                );
-                context.reply(`┇ تم تسجيله بلقب ${title} بنجاح`);
-            }
-        } else if (command === 'حذف_لقب') {
-            if (!context.isGroup) {
-                context.reply('هذا الأمر يعمل فقط في المجموعات');
-                return;
-            }
-            if (!isAdmin) {
-                context.reply('هذا الأمر يعمل فقط مع الإداريين');
-                return;
-            }
-            if (!text || text.trim() === '') {
-                context.reply('اكتب اللقب الذي تريد حذفه');
-                return;
-            }
-            const deleteTitle = text.trim();
-            const deleteResult = await medoBK9.deleteOne({ bk9: deleteTitle, groupId: context.chat });
-            deleteResult.deletedCount > 0
-                ? context.reply(`┇ تم حذف اللقب ${deleteTitle} بنجاح`)
-                : context.reply(`اللقب ${deleteTitle} غير مسجل لاحد اساسا`);
-        } else if (command === 'لقبي') {
-            const senderId = context.sender.split('@')[0];
-            const userTitle = await medoBK9.findOne({ userId: senderId, groupId: context.chat });
-            userTitle && userTitle.bk9
-                ? context.reply(`┇ لقبك هو : ${userTitle.bk9}`)
-                : context.reply('┇ لم يتم تسجيلك بعد');
-        } else if (command === 'لقبه' && context.mentionedJid && context.mentionedJid.length > 0) {
-            const mentionedUserId = context.mentionedJid[0].replace('@s.whatsapp.net', '');
-            const mentionedUserTitle = await medoBK9.findOne({ userId: mentionedUserId, groupId: context.chat });
-            if (mentionedUserTitle) {
-                const mentionedUserName = await conn.getName(mentionedUserId + '@s.whatsapp.net');
-                context.reply(`┇ لقبه هو : ${mentionedUserTitle.bk9}`);
-            } else {
-                context.reply('┇ لم يتم تسجيله بعد');
-            }
-        } else if (command === 'لقب') {
-            if (!text || text.trim() === '') {
-                context.reply('اكتب لقب للتحقق منه');
-                return;
-            }
-            const checkTitle = text.trim();
-            const checkResult = await medoBK9.findOne({ bk9: checkTitle, groupId: context.chat });
-            if (checkResult) {
-                const checkUser = await conn.getName(checkResult.userId + '@s.whatsapp.net');
-                context.reply(`اللقب ${checkTitle} ماخوذ من طرف ${checkUser}`);
-            } else {
-                context.reply(`اللقب ${checkTitle} متوفر`);
-            }
+        switch (medoCommand) {
+            case 'الألقاب':
+                await handleTitlesCommand(medoContext);
+                break;
+            case 'تسجيل':
+                await handleRegisterCommand(medoContext);
+                break;
+            case 'حذف_لقب':
+                await handleDeleteTitleCommand(medoContext);
+                break;
+            case 'لقبي':
+                await handleMyTitleCommand(medoContext);
+                break;
+            case 'لقبه':
+                await handleGetTitleCommand(medoContext);
+                break;
+            case 'لقب':
+                await handleCheckTitleCommand(medoContext);
+                break;
+            default:
+                medoContext.reply('أمر غير معروف');
         }
     } catch (error) {
-        console.error('خطأ:', error);
+        console.error('Error handling command:', error);
+        medoContext.reply('حدث خطأ اثناء معالجة الأمر');
     }
 };
 
 // Attach command and tag info
-combinedHandler.command = ['بروفايل', 'ملف_الاعضاء', 'إنشاء_ملف', 'الألقاب', 'تسجيل', 'لقبي', 'لقبه', 'حذف_لقب', 'لقب'];
-combinedHandler.tags = ['profile', 'BK9'];
+medoHandler.command = ['الألقاب', 'تسجيل', 'لقبي', 'لقبه', 'حذف_لقب', 'لقب'];
+medoHandler.tags = ['BK9'];
 
-export default combinedHandler;
+export default medoHandler;

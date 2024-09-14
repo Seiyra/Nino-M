@@ -1,8 +1,6 @@
 import express from 'express';
-import {createServer} from 'http';
-import path from 'path';
-import {Socket} from 'socket.io';
-import {toBuffer} from 'qrcode';
+import { createServer } from 'http';
+import { toBuffer } from 'qrcode';
 import fetch from 'node-fetch';
 
 function connect(conn, PORT) {
@@ -11,7 +9,7 @@ function connect(conn, PORT) {
   const server = global.server = createServer(app);
   let _qr = 'QR invalido, probablemente ya hayas escaneado el QR.';
 
-  conn.ev.on('connection.update', function appQR({qr}) {
+  conn.ev.on('connection.update', function appQR({ qr }) {
     if (qr) _qr = qr;
   });
 
@@ -21,21 +19,9 @@ function connect(conn, PORT) {
   });
 
   server.listen(PORT, () => {
-    console.log('App listened on port', PORT);
+    console.log('App listening on port', PORT);
     if (opts['keepalive']) keepAlive();
   });
-}
-
-function pipeEmit(event, event2, prefix = '') {
-  const old = event.emit;
-  event.emit = function(event, ...args) {
-    old.emit(event, ...args);
-    event2.emit(prefix + event, ...args);
-  };
-  return {
-    unpipeEmit() {
-      event.emit = old;
-    }};
 }
 
 function keepAlive() {
