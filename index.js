@@ -7,6 +7,7 @@ import chalk from "chalk";
 import yargs from "yargs";
 import { createInterface } from "readline";
 import { watchFile, unwatchFile } from "fs";
+import express from 'express'; // Import Express
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
@@ -30,9 +31,9 @@ say(`by Elta`, {
 let isRunning = false;
 
 /**
-* Start the main process and the plugin server
-* @param {String} file `path/to/file`
-*/
+ * Start the main process and the plugin server
+ * @param {String} file `path/to/file`
+ */
 function start(file) {
   if (isRunning) return;
   isRunning = true;
@@ -82,6 +83,18 @@ function start(file) {
       p.emit('message', line.trim());
     });
   }
+
+  // Start Express server
+  const app = express();
+  const port = process.env.PORT || 3000;
+
+  app.get('/', (req, res) => {
+    res.send('Hello from Elta Bot Main Server!');
+  });
+
+  app.listen(port, () => {
+    console.log(`Main server listening on port ${port}`);
+  });
 }
 
 // Start the bot and plugin server

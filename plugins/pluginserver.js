@@ -1,18 +1,14 @@
-import http from 'http';
+const http = require('http');
 
-// Create plugin server on port 3002
-const pluginPort = 3002;
+// Get the plugin server port from environment variables or fallback to 3002
+const pluginPort = process.env.PLUGIN_PORT || 3002;
+
 const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Plugin server running on port 3002');
+  res.end('Hello from Elta Bot Plugin Server!');
 });
 
-// Start server
+// Start the plugin server
 server.listen(pluginPort, () => {
-  console.log(`Plugin server running on port ${pluginPort}`);
-});
-
-// Error handling
-server.on('error', (err) => {
-  console.error(`Plugin server error: ${err.message}`);
+  console.log(`Plugin server listening on port ${pluginPort}`);
 });
