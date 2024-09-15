@@ -1,14 +1,49 @@
-const express = require('express');
-const app = express();
+import express from 'express';
+import {createServer} from 'http';
+import path from 'path';
+import {Socket} from 'socket.io';
+import {toBuffer} from 'qrcode';
+import fetch from 'node-fetch';
 
-// Get the port from environment variables or fallback to 3000
-const port = process.env.PORT || 3000;
+function connect(conn, PORT) {
+  const app = global.app = express();
+  console.log(app);
+  const server = global.server = createServer(app);
+  let _qr = 'QR invalido, probablemente ya hayas escaneado el QR.';
 
-app.get('/', (req, res) => {
-  res.send('Hello from Elta Bot Main Server!');
-});
+  conn.ev.on('connection.update', function appQR({qr}) {
+    if (qr) _qr = qr;
+  });
 
-// Start the main server
-app.listen(port, () => {
-  console.log(`Main server listening on port ${port}`);
-});
+  app.use(async (req, res) => {
+    res.setHeader('content-type', 'image/png');
+    res.end(await toBuffer(_qr));
+  });
+
+  server.listen(PORT, () => {
+    console.log('App listened on port', PORT);
+    if (opts['keepalive']) keepAlive();
+  });
+}
+
+function pipeEmit(event, event2, prefix = '') {
+  const old = event.emit;
+  event.emit = function(event, ...args) {
+    old.emit(event, ...args);
+    event2.emit(prefix + event, ...args);
+  };
+  return {
+    unpipeEmit() {
+      event.emit = old;
+    }};
+}
+
+function keepAlive() {
+  const url = `https://${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.repl.co`;
+  if (/(\/\/|\.)undefined\./.test(url)) return;
+  setInterval(() => {
+    fetch(url).catch(console.error);
+  }, 5 * 1000 * 60);
+}
+
+export default connect;
