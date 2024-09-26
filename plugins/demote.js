@@ -1,68 +1,47 @@
-import fs from 'fs';
-
-const handler = async (m, { conn, usedPrefix, text }) => {
-  const datas = global;
-
-  // Set the language, defaulting to 'en' if undefined
-  const idioma = datas.db.data.users[m.sender].language || 'en';
-
-  let _translate;
-  try {
-    _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`));
-  } catch (e) {
-    console.error(`Language file not found for ${idioma}, defaulting to English.`);
-    _translate = JSON.parse(fs.readFileSync(`./src/languages/en.json`));  // Fallback to English
-  }
-
-  const tradutor = _translate.plugins.gc_demote;
-
+let handler = async (m, { conn, usedPrefix, command, text }) => {
   let number;
+
+  // Check if the text is a number, a tag, or empty
   if (isNaN(text)) {
-    if (text.includes('@')) {
-      number = text.split('@')[1]; // Extract number from @mention
+    if (text && text.includes('@')) {
+      number = text.split`@`[1]; // Extract number from tag
     }
   } else {
-    number = text;
+    number = text; // Number input
   }
 
-  if (!text && !m.quoted) {
-    return conn.reply(
-      m.chat,
-      `${tradutor.texto1[0]} ${usedPrefix}quitaradmin @tag*\n*┠≽ ${usedPrefix}quitaradmin ${tradutor.texto1[1]}`,
-      m
-    );
-  }
+  // If no text and no quoted message
+  if (!number && !m.quoted)
+    return conn.reply(m.chat, `✳️ Usage: \n *${usedPrefix + command}* @tag or reply to a user`, m);
 
-  if (!number || number.length > 13 || number.length < 11) {
-    return conn.reply(m.chat, tradutor.texto2, m); // Invalid number length message
-  }
+  // If number length is invalid
+  if (number && (number.length > 13 || number.length < 11))
+    return conn.reply(m.chat, `✳️ Invalid number`, m);
 
-  let user;
   try {
-    if (text) {
-      user = `${number}@s.whatsapp.net`;
-    } else if (m.quoted && m.quoted.sender) {
-      user = m.quoted.sender;
-    } else if (m.mentionedJid && m.mentionedJid.length > 0) {
-      user = m.mentionedJid[0];
+    let user;
+    if (number) {
+      user = number + '@s.whatsapp.net'; // Set the user based on the number
+    } else if (m.quoted) {
+      user = m.quoted.sender; // Use quoted message sender
+    } else if (m.mentionedJid) {
+      user = m.mentionedJid[0]; // Use mentioned user
     }
+
+    // Proceed to demote the user without sending any confirmation
+    await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
+
   } catch (e) {
     console.error(e);
-    return conn.reply(m.chat, tradutor.texto2, m); // Fallback in case of error
+    m.reply(`❌ Failed to demote the user.`);
   }
+}
 
-  if (user) {
-    await conn.groupParticipantsUpdate(m.chat, [user], 'demote');
-    conn.reply(m.chat, tradutor.texto3, m); // Successfully demoted
-  }
-};
-
-handler.help = ['*593xxx*', '*@usuario*', '*responder chat*'].map((v) => 'demote ' + v);
-handler.tags = ['group'];
-handler.command = /^(demote|quitarpoder|quitaradmin)$/i;
-handler.group = true;
-handler.admin = true;
-handler.botAdmin = true;
-handler.fail = null;
+handler.help = ['demote (@tag)']
+handler.tags = ['group']
+handler.command = ['تخفيض'] // Arabic for "demote"
+handler.group = true
+handler.admin = true
+handler.botAdmin = true
 
 export default handler;
