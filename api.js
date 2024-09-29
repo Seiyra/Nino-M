@@ -1,27 +1,47 @@
-import {watchFile, unwatchFile} from 'fs';
+import { watchFile, unwatchFile } from 'fs';
 import chalk from 'chalk';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio'; // Updated import
 import fetch from 'node-fetch';
 import axios from 'axios';
 import moment from 'moment-timezone';
 
-/* si quieres modificar esto y agregarr mas apis asegurate poner global.tuapi = ['apikey']  skid 🤑 */
+/* si quieres modificar esto y agregar mas apis asegúrate poner global.tuapi = ['apikey']  skid 🤑 */
 
-global.openai_key = 'sk-0';
+global.openai_key = 'sk-0'; // Make sure to use a valid API key
 /* Consigue tu ApiKey en este enlace: https://platform.openai.com/account/api-keys */
 
-global.openai_org_id = 'org-3';
+global.openai_org_id = 'org-3'; // Make sure to use a valid organization ID
 /* Consigue tu ID de organizacion en este enlace: https://platform.openai.com/account/org-settings */
 
+global.keysZens = [
+    'LuOlangNgentot', 
+    'c2459db922', 
+    '37CC845916', 
+    '6fb0eff124', 
+    'hdiiofficial', 
+    'fiktod', 
+    'BF39D349845E', 
+    '675e34de8a', 
+    '0b917b905e6f'
+];
+global.keysxxx = keysZens[Math.floor(Math.random() * keysZens.length)];
 
-global.keysZens = ['LuOlangNgentot', 'c2459db922', '37CC845916', '6fb0eff124', 'hdiiofficial', 'fiktod', 'BF39D349845E', '675e34de8a', '0b917b905e6f'];
-global.keysxxx = keysZens[Math.floor(keysZens.length * Math.random())];
-global.keysxteammm = ['29d4b59a4aa687ca', '5LTV57azwaid7dXfz5fzJu', 'cb15ed422c71a2fb', '5bd33b276d41d6b4', 'HIRO', 'kurrxd09', 'ebb6251cc00f9c63'];
-global.keysxteam = keysxteammm[Math.floor(keysxteammm.length * Math.random())];
+global.keysxteammm = [
+    '29d4b59a4aa687ca', 
+    '5LTV57azwaid7dXfz5fzJu', 
+    'cb15ed422c71a2fb', 
+    '5bd33b276d41d6b4', 
+    'HIRO', 
+    'kurrxd09', 
+    'ebb6251cc00f9c63'
+];
+global.keysxteam = keysxteammm[Math.floor(Math.random() * keysxteammm.length)];
+
 global.keysneoxrrr = ['5VC9rvNx', 'cfALv5'];
-global.keysneoxr = keysneoxrrr[Math.floor(keysneoxrrr.length * Math.random())];
+global.keysneoxr = keysneoxrrr[Math.floor(Math.random() * keysneoxrrr.length)];
+
 global.lolkeysapi = ['BrunoSobrino_2']; // ['GataDios']
 global.itsrose = ['4b146102c4d500809da9d1ff'];
 

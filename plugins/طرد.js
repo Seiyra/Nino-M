@@ -1,6 +1,12 @@
 import { areJidsSameUser } from '@whiskeysockets/baileys';
 
 let handler = async (m, { conn, text, participants }) => {
+    // Check if the sender is an admin
+    const isAdmin = participants.find(p => areJidsSameUser(p.id, m.sender) && p.admin);
+    if (!isAdmin) {
+        return m.reply('فقط المشرفين يمكنهم استخدام هذا الأمر');
+    }
+
     let users;
     if (m.quoted) {
         users = [m.quoted.sender];
@@ -18,10 +24,10 @@ let handler = async (m, { conn, text, participants }) => {
         kickedUser = users;
     } else {
         for (let user of users) {
-            if (user.endsWith('@s.whatsapp.net') && !(participants.find(v => areJidsSameUser(v.id, user)) || { admin: true }).admin) {
+            if (user.endsWith('@s.whatsapp.net') && !(participants.find(v => areJidsSameUser(v.id, user) && v.admin))) {
                 try {
                     const res = await conn.groupParticipantsUpdate(m.chat, [user], 'remove');
-                    kickedUser = kickedUser.concat(user);
+                    kickedUser.push(user);
                     await delay(1 * 1000);
                 } catch (err) {
                     console.error('Error removing user:', err);
@@ -34,11 +40,11 @@ let handler = async (m, { conn, text, participants }) => {
 };
 
 handler.help = ['kick', '-'];
-handler.tags = ['owner'];
-handler.command =/^(طرد|دزمها|انقلع|بنعالي)$/i
-handler.admin = true;
-handler.group = true;
-handler.botAdmin = true;
+handler.tags = ['owner']; // Adjust if necessary
+handler.command = /^(طرد|دزمها|انقلع|بنعالي)$/i;
+handler.admin = true;  // Ensures that this command can only be used by admins
+handler.group = true;  // Ensures that this command can only be used in groups
+handler.botAdmin = true; // Ensures that the bot itself is an admin
 
 export default handler;
 

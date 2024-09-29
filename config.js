@@ -7,7 +7,10 @@ import fs from 'fs';
 import moment from 'moment-timezone';
 
 // Define global variables
-global.owner = [['96176337375', '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻', true]];
+global.owner = [
+    ['96176337375', '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻', true],
+    ['966535993926', 'New Owner Name', true] // Add the new owner here
+];
 global.xaxa = 'kaneki';
 global.suittag = ['96176337375'];
 global.prems = ['96176337375'];
@@ -59,34 +62,35 @@ global.fin = '════◕◕ • •';
 global.botdate = `⫹⫺ Date: ${moment.tz('America/Los_Angeles').format('DD/MM/YY')}`;
 global.bottime = `𝗧𝗜𝗠𝗘: ${moment.tz('America/Los_Angeles').format('HH:mm:ss')}`;
 global.fgif = {
-  key: { participant: '0@s.whatsapp.net' },
-  message: {
-    videoMessage: {
-      title: global.wm,
-      h: 'Hmm',
-      seconds: '999999999',
-      gifPlayback: 'true',
-      caption: global.bottime,
-      jpegThumbnail: fs.readFileSync('./Nino.png')
+    key: { participant: '0@s.whatsapp.net' },
+    message: {
+        videoMessage: {
+            title: global.wm,
+            h: 'Hmm',
+            seconds: '999999999',
+            gifPlayback: 'true',
+            caption: global.bottime,
+            jpegThumbnail: fs.readFileSync('./Nino.png')
+        }
     }
-  }
 };
 global.multiplier = 99;
 global.flaaa = [
-  'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text=',
-  'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=crafts-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&text=',
-  'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=amped-logo&doScale=true&scaleWidth=800&scaleHeight=500&text=',
-  'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=',
-  'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&fillColor1Color=%23f2aa4c&fillColor2Color=%23f2aa4c&fillColor3Color=%23f2aa4c&fillColor4Color=%23f2aa4c&fillColor5Color=%23f2aa4c&fillColor6Color=%23f2aa4c&fillColor7Color=%23f2aa4c&fillColor8Color=%23f2aa4c&fillColor9Color=%23f2aa4c&fillColor10Color=%23f2aa4c&fillOutlineColor=%23f2aa4c&fillOutline2Color=%23f2aa4c&backgroundColor=%23101820&text='
+    'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text=',
+    'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=crafts-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&text=',
+    'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=amped-logo&doScale=true&scaleWidth=800&scaleHeight=500&text=',
+    'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text=',
+    'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&fillColor1Color=%23f2aa4c&fillColor2Color=%23f2aa4c&fillColor3Color=%23f2aa4c&fillColor4Color=%23f2aa4c&fillColor5Color=%23f2aa4c&fillColor6Color=%23f2aa4c&fillColor7Color=%23f2aa4c&fillColor8Color=%23f2aa4c&fillColor9Color=%23f2aa4c&fillColor10Color=%23f2aa4c&fillOutlineColor=%23f2aa4c&fillOutline2Color=%23f2aa4c&backgroundColor=%23101820&text='
 ];
 
 // Watch for changes in the current file and update
 const file = fileURLToPath(import.meta.url);
 watchFile(file, () => {
-  unwatchFile(file);
-  console.log(chalk.redBright('Updated main.js'));
-  import(`${file}?update=${Date.now()}`);
+    unwatchFile(file);
+    console.log(chalk.redBright('Updated main.js'));
+    import(`${file}?update=${Date.now()}`);
 });
+
 // config.js
 
 export const packname = '𝑬𝒍𝒕𝒂 - 𝑩𝑶𝑻';

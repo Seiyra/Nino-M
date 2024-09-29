@@ -128,11 +128,17 @@ async function handleDeleteTitleCommand(medoContext) {
 
 async function handleMyTitleCommand(medoContext) {
     const medoSenderId = medoContext.sender.replace('@s.whatsapp.net', '');
+    console.log('Sender ID:', medoSenderId);
+    console.log('Chat ID:', medoContext.chat);
+    
     const medoUserTitle = await medoBK9.findOne({ userId: medoSenderId, groupId: medoContext.chat });
+    console.log('User Title:', medoUserTitle);
 
-    medoUserTitle && medoUserTitle.bk9
-        ? medoContext.reply(`┇ لقبك هو : ${medoUserTitle.bk9}`)
-        : medoContext.reply('┇ لم يتم تسجيلك بعد');
+    if (medoUserTitle && medoUserTitle.bk9) {
+        medoContext.reply(`┇ لقبك هو : ${medoUserTitle.bk9}`);
+    } else {
+        medoContext.reply('┇ لم يتم تسجيلك بعد');
+    }
 }
 
 async function handleGetTitleCommand(medoContext) {
