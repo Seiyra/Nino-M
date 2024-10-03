@@ -24,6 +24,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 
 handler.help = ['messi'];
 handler.tags = ['img'];
-handler.command = /^(ص)$/i;
+handler.command = /(ص)$/i;
 
 export default handler;

@@ -9,13 +9,12 @@ import moment from 'moment-timezone';
 // Define global variables
 global.owner = [
     ['96176337375', '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻', true],
-    ['966535993926', 'New Owner Name', true] // Add the new owner here
 ];
 global.xaxa = 'kaneki';
 global.suittag = ['96176337375'];
 global.prems = ['96176337375'];
 global.packname = '𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻';
-global.menuvid = 'https://i.imgur.com/id9QGXO.mp4';
+global.menuvid = 'https://imgur.com/NPJlkaG';
 global.author = '★ELTA★';
 global.wm = '★𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 𝐵𝛩𝑇★';
 global.titulowm = '🤖 𝓝𝓲𝓷𝓸 - 𝑩𝑶𝑻 🤖';

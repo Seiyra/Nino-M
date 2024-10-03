@@ -3822,8 +3822,8 @@
             ]
         },
         "participantsUpdate": {
-            "texto1": "👋 Welcome!\n@user",
-            "texto2": "👋 Goodbye!\n@user",
+            "texto1": "👋 نورت!\n@user",
+            "texto2": "👋 بايييييي!\n@user",
             "texto3": "*[ ℹ️ ] @user has been promoted to administrator.*",
             "texto4": "*[ ℹ️ ] @user has been demoted from administrator.*",
             "texto5": "*[ ℹ️ ] The group description has been modified.*",
