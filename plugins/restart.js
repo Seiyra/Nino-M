@@ -1,16 +1,1 @@
-import { spawn } from 'child_process'
-let handler = async (m, { conn, isROwner, text }) => {
-  if (!process.send) throw 'Dont: node main.js\nDo: node index.js'
-  if (conn.user.jid == conn.user.jid) {
-    await m.reply('🔄 Restarting Bot...\n Wait a moment')
-    process.send('reset')
-  } else throw 'eh'
-}
-
-handler.help = ['restart']
-handler.tags = ['owner']
-handler.command = ['restart']
-
-handler.rowner = true
-
-export default handler
+const _0x4561fb=_0x350b;(function(_0x441a17,_0x54680a){const _0x3e929c=_0x350b,_0x5428b3=_0x441a17();while(!![]){try{const _0x55c383=parseInt(_0x3e929c(0xae))/0x1*(parseInt(_0x3e929c(0xac))/0x2)+-parseInt(_0x3e929c(0x9e))/0x3+-parseInt(_0x3e929c(0x9f))/0x4+-parseInt(_0x3e929c(0xb1))/0x5*(-parseInt(_0x3e929c(0xa6))/0x6)+parseInt(_0x3e929c(0xa1))/0x7+parseInt(_0x3e929c(0xab))/0x8+-parseInt(_0x3e929c(0xad))/0x9;if(_0x55c383===_0x54680a)break;else _0x5428b3['push'](_0x5428b3['shift']());}catch(_0x8b851){_0x5428b3['push'](_0x5428b3['shift']());}}}(_0x1bde,0x45eda));import{spawn}from'child_process';let handler=async(_0x9e572a,{conn:_0x5dea42,isROwner:_0x412bf7,text:_0x15d512})=>{const _0x28ce11=_0x350b;if(!process[_0x28ce11(0xb2)])throw _0x28ce11(0xa2);if(_0x5dea42['user']['jid']==_0x5dea42[_0x28ce11(0xaf)][_0x28ce11(0xa9)])await _0x9e572a[_0x28ce11(0xa3)](_0x28ce11(0xb0)),process[_0x28ce11(0xb2)]('reset');else throw'eh';};handler[_0x4561fb(0xa8)]=['restart'],handler[_0x4561fb(0xa4)]=[_0x4561fb(0xa0)],handler[_0x4561fb(0xa5)]=[_0x4561fb(0xaa)],handler[_0x4561fb(0xa7)]=!![];function _0x350b(_0x45b12c,_0x50d56a){const _0x1bdeef=_0x1bde();return _0x350b=function(_0x350bfb,_0x4a9e39){_0x350bfb=_0x350bfb-0x9e;let _0x3e19fe=_0x1bdeef[_0x350bfb];return _0x3e19fe;},_0x350b(_0x45b12c,_0x50d56a);}function _0x1bde(){const _0x470f96=['🔄\x20Restarting\x20Bot...\x0a\x20Wait\x20a\x20moment','141695tHYoFj','send','576903suTkdo','652684SGAtuc','owner','2887045YWeqAG','Dont:\x20node\x20main.js\x0aDo:\x20node\x20index.js','reply','tags','command','42qxioTJ','rowner','help','jid','restart','1865104jPjwoF','235332WiSKwu','4995414DhIoss','3jtxKMl','user'];_0x1bde=function(){return _0x470f96;};return _0x1bde();}export default handler;

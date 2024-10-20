@@ -1,17 +1,1 @@
-import { webp2png } from '../lib/webp2mp4.js'
-
-let handler = async (m, { conn, usedPrefix, command }) => {
-  const notStickerMessage = `✳️ *رد على صورة ب* :\n\n *${usedPrefix + command}*`
-  if (!m.quoted) throw notStickerMessage
-  const q = m.quoted || m
-  let mime = q.mediaType || ''
-  if (!/sticker/.test(mime)) throw notStickerMessage
-  let media = await q.download()
-  let out = (await webp2png(media).catch(_ => null)) || Buffer.alloc(0)
-  await conn.sendFile(m.chat, out, 'out.png', '*✅ Here you have*', m)
-}
-handler.help = ['toimg <sticker>']
-handler.tags = ['sticker']
-handler.command = ['لصورة']
-
-export default handler
+const _0x5791e2=_0x5426;(function(_0x389806,_0x3ee26c){const _0x5cb3b5=_0x5426,_0x7d2695=_0x389806();while(!![]){try{const _0x365cb1=-parseInt(_0x5cb3b5(0x1de))/0x1*(parseInt(_0x5cb3b5(0x1d6))/0x2)+parseInt(_0x5cb3b5(0x1d3))/0x3*(parseInt(_0x5cb3b5(0x1d9))/0x4)+-parseInt(_0x5cb3b5(0x1e5))/0x5+parseInt(_0x5cb3b5(0x1e0))/0x6*(parseInt(_0x5cb3b5(0x1da))/0x7)+parseInt(_0x5cb3b5(0x1db))/0x8+parseInt(_0x5cb3b5(0x1e7))/0x9+-parseInt(_0x5cb3b5(0x1dc))/0xa*(parseInt(_0x5cb3b5(0x1d8))/0xb);if(_0x365cb1===_0x3ee26c)break;else _0x7d2695['push'](_0x7d2695['shift']());}catch(_0xf8f745){_0x7d2695['push'](_0x7d2695['shift']());}}}(_0x51ca,0x20c2a));import{webp2png}from'../lib/webp2mp4.js';let handler=async(_0x407168,{conn:_0x4f175f,usedPrefix:_0x55a836,command:_0xcfb3eb})=>{const _0x34a0cb=_0x5426,_0x4ed48e=_0x34a0cb(0x1e1)+(_0x55a836+_0xcfb3eb)+'*';if(!_0x407168['quoted'])throw _0x4ed48e;const _0x12803e=_0x407168[_0x34a0cb(0x1e3)]||_0x407168;let _0x4eb7bb=_0x12803e['mediaType']||'';if(!/sticker/[_0x34a0cb(0x1dd)](_0x4eb7bb))throw _0x4ed48e;let _0x3d798b=await _0x12803e[_0x34a0cb(0x1e2)](),_0x449bdf=await webp2png(_0x3d798b)['catch'](_0x2c9f34=>null)||Buffer[_0x34a0cb(0x1df)](0x0);await _0x4f175f[_0x34a0cb(0x1d5)](_0x407168['chat'],_0x449bdf,'out.png','*✅\x20Here\x20you\x20have*',_0x407168);};function _0x51ca(){const _0x37c432=['1410bUhKgg','✳️\x20*رد\x20على\x20صورة\x20ب*\x20:\x0a\x0a\x20*','download','quoted','help','471855QeqvvP','لصورة','901566sQTHjl','324033ZziizR','sticker','sendFile','111432nPNwtS','tags','1020811IVQOGR','8UeaCSb','5698xUIlTy','441520BOcamw','30FseygW','test','1zEjKxh','alloc'];_0x51ca=function(){return _0x37c432;};return _0x51ca();}function _0x5426(_0x58ea08,_0x265373){const _0x51ca9f=_0x51ca();return _0x5426=function(_0x54261c,_0x56654a){_0x54261c=_0x54261c-0x1d3;let _0x18fe2c=_0x51ca9f[_0x54261c];return _0x18fe2c;},_0x5426(_0x58ea08,_0x265373);}handler[_0x5791e2(0x1e4)]=['toimg\x20<sticker>'],handler[_0x5791e2(0x1d7)]=[_0x5791e2(0x1d4)],handler['command']=[_0x5791e2(0x1e6)];export default handler;

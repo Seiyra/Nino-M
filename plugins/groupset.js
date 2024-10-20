@@ -1,17 +1,1 @@
-let handler = async (m, { conn, command }) => {
-  // Map the Arabic commands directly to group setting actions
-  let isClose = command === 'قفل' ? 'announcement' : command === 'فتح' ? 'not_announcement' : ''
-
-  if (!isClose) throw new Error('Invalid command') // Failsafe, should not trigger
-
-  // Update the group setting based on the command
-  await conn.groupSettingUpdate(m.chat, isClose)
-}
-
-handler.help = ['group *فتح/قفل*'] // Only Arabic commands in help
-handler.tags = ['group']
-handler.command = ['قفل', 'فتح'] // Arabic commands only
-handler.admin = true
-handler.botAdmin = true
-
-export default handler
+function _0x173d(){const _0x35a95d=['7508990BBxHGV','announcement','20117835sjZVyg','help','tags','Invalid\x20command','قفل','12884hjlgQx','468628qbtLiC','فتح','254597SSILfl','120srZHAn','command','group\x20*فتح/قفل*','not_announcement','botAdmin','14627jvDOca','group','groupSettingUpdate','chat','5968160jehpbM','1104DPQiJc'];_0x173d=function(){return _0x35a95d;};return _0x173d();}const _0x5a9627=_0x2e73;(function(_0x3f43bc,_0x516831){const _0x4dc82a=_0x2e73,_0x3fe11f=_0x3f43bc();while(!![]){try{const _0x3b8cb9=-parseInt(_0x4dc82a(0x1e2))/0x1+-parseInt(_0x4dc82a(0x1da))/0x2+parseInt(_0x4dc82a(0x1d1))/0x3*(-parseInt(_0x4dc82a(0x1d9))/0x4)+-parseInt(_0x4dc82a(0x1d2))/0x5+parseInt(_0x4dc82a(0x1dd))/0x6*(parseInt(_0x4dc82a(0x1dc))/0x7)+parseInt(_0x4dc82a(0x1d0))/0x8+parseInt(_0x4dc82a(0x1d4))/0x9;if(_0x3b8cb9===_0x516831)break;else _0x3fe11f['push'](_0x3fe11f['shift']());}catch(_0x2e1e5d){_0x3fe11f['push'](_0x3fe11f['shift']());}}}(_0x173d,0xbca50));function _0x2e73(_0x1a13a6,_0x4af0c8){const _0x173d19=_0x173d();return _0x2e73=function(_0x2e73d4,_0x3d11a4){_0x2e73d4=_0x2e73d4-0x1cd;let _0x1f87ac=_0x173d19[_0x2e73d4];return _0x1f87ac;},_0x2e73(_0x1a13a6,_0x4af0c8);}let handler=async(_0x568267,{conn:_0x11cd89,command:_0x5c5f2d})=>{const _0x1162ae=_0x2e73;let _0x56e5f7=_0x5c5f2d===_0x1162ae(0x1d8)?_0x1162ae(0x1d3):_0x5c5f2d===_0x1162ae(0x1db)?_0x1162ae(0x1e0):'';if(!_0x56e5f7)throw new Error(_0x1162ae(0x1d7));await _0x11cd89[_0x1162ae(0x1ce)](_0x568267[_0x1162ae(0x1cf)],_0x56e5f7);};handler[_0x5a9627(0x1d5)]=[_0x5a9627(0x1df)],handler[_0x5a9627(0x1d6)]=[_0x5a9627(0x1cd)],handler[_0x5a9627(0x1de)]=[_0x5a9627(0x1d8),_0x5a9627(0x1db)],handler['admin']=!![],handler[_0x5a9627(0x1e1)]=!![];export default handler;
