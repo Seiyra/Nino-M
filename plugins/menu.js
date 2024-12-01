@@ -1,1 +1,128 @@
-const _0x14e21e=_0x482a;(function(_0x3cbc59,_0x1333e1){const _0x628f05=_0x482a,_0x1f1f0f=_0x3cbc59();while(!![]){try{const _0x9438da=parseInt(_0x628f05(0x1e1))/0x1*(parseInt(_0x628f05(0x210))/0x2)+parseInt(_0x628f05(0x202))/0x3*(-parseInt(_0x628f05(0x1fa))/0x4)+parseInt(_0x628f05(0x1f3))/0x5+parseInt(_0x628f05(0x1e5))/0x6+-parseInt(_0x628f05(0x1da))/0x7+-parseInt(_0x628f05(0x1d3))/0x8+-parseInt(_0x628f05(0x201))/0x9*(parseInt(_0x628f05(0x211))/0xa);if(_0x9438da===_0x1333e1)break;else _0x1f1f0f['push'](_0x1f1f0f['shift']());}catch(_0x47c88b){_0x1f1f0f['push'](_0x1f1f0f['shift']());}}}(_0x2f03,0xc73bd));function _0x2f03(){const _0xd30523=['3180176YSmKYA','chat','trim','sender','tags','Good\x20Evening\x20🌇','Good\x20Afternoon\x20☀️','2704982UySuBs','padStart','text','✦\x20───『\x20*قائمة\x20القروب*\x20』───\x20⚝\x0a\x20\x20\x20\x20🔒\x20*.قفل*\x20(قفل\x20المجموعة)\x0a\x20\x20\x20\x20🔓\x20*.فتح*\x20(فتح\x20المجموعة)\x0a\x20\x20\x20\x20🖼️\x20*.تغيير\x20صورة*\x20(تغيير\x20صورة\x20المجموعة)\x0a\x20\x20\x20\x20╰──────────⳹','usermenu','https://i.imgur.com/MzQELlJ.jpeg','اوامر','2ZJIVnU',',\x20Senpai!\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20*','uptime','Asia/Kolkata','3287910aPkgYR','Invalid\x20choice.\x20Please\x20reply\x20with\x20a\x20valid\x20number.','\x20S\x20','toString','Good\x20Morning\x20🌄','Private','quoted','filter','random','✦\x20───『\x20*قائمة\x20المستخدمين*\x20』───\x20🎭\x0a\x20\x20\x20\x20👤\x20*.لقبي*\x20(عرض\x20لقبك)\x0a\x20\x20\x20\x20🎉\x20*.تحسين*\x20(تحسين)\x0a\x20\x20\x20\x20🖼️\x20*.لصورة*\x20(لصورة)\x0a\x20\x20\x20\x20📹\x20*.لفيد*\x20(لفيديو)\x0a\x20\x20\x20\x20📜\x20*.لقبه*\x20(عرض\x20لقب\x20المستخدم)\x0a\x20\x20\x20\x20╰──────────⳹','Good\x20Night\x20🌙','\x0aitem1.TEL;waid=','limit','send','7421095pZKGfz','0@s.whatsapp.net','groupmenu','key','gurumenu','join','\x20M\x20','8FarsZe','Premium','message','error','sendMessage','An\x20error\x20occurred\x20while\x20processing\x20your\x20request.','multiplier','9CpGBep','1215660DUTGRH','main','opts','Ｎｉｎｏ－Ｂｏｔ','menu','adminsmenu','length','Free','*\x20\x0a\x0a\x20\x20\x20\x20\x20\x20\x20\x20乂───『\x20*U\x20S\x20E\x20R*』───乂\x0a\x20\x20\x20\x20\x20\x20\x20\x20⛥\x20*Rank:*\x20User\x0a\x20\x20\x20\x20\x20\x20\x20\x20⛥\x20*Owner:*\x20Elta/+96176337375\x0a\x20\x20\x20\x20\x20\x20\x20\x20╰──────────⳹\x0a\x0a╭───────⳹\x0a│\x20✨\x20*1.*\x20قائمة\x20المشرفين\x20(Admins\x20Menu)\x0a│\x20🎮\x20*2.*\x20قائمة\x20الالعاب\x20(Games\x20Menu)\x0a│\x20🏢\x20*3.*\x20قائمة\x20المجموعة\x20(Group\x20Menu)\x0a│\x20👤\x20*4.*\x20قائمة\x20المستخدمين\x20(Users\x20Menu)\x0a╰───────⳹\x0a','help','command','data','reply','split','1064566UQJkTX','6863210QCrScz','getName','format','status@broadcast','\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20Hi\x20','Public','platform','floor','menuvid','\x20H\x20'];_0x2f03=function(){return _0xd30523;};return _0x2f03();}import{promises as _0xfc6690,readFileSync}from'fs';import{join}from'path';import{xpRange}from'../lib/levelling.js';function _0x482a(_0x930c6e,_0x4b50c1){const _0x2f037e=_0x2f03();return _0x482a=function(_0x482a1,_0x1de58f){_0x482a1=_0x482a1-0x1d1;let _0xf817f2=_0x2f037e[_0x482a1];return _0xf817f2;},_0x482a(_0x930c6e,_0x4b50c1);}import _0x5c48f4 from'moment-timezone';import _0x4350ab from'os';const menuVideoUrl=global[_0x14e21e(0x1d1)],menus={'adminsmenu':'✦\x20───『\x20*المشرفين*\x20』───\x20👾\x0a\x20\x20\x20\x20👑\x20*.ترقية*\x20(ترقية\x20مستخدم)\x0a\x20\x20\x20\x20❌\x20*.طرد*\x20(طرد\x20مستخدم)\x0a\x20\x20\x20\x20🗑️\x20*.حذف*\x20(إزالة\x20أو\x20حذف)\x0a\x20\x20\x20\x20🔗\x20*.رابط*\x20(عرض\x20رابط\x20المجموعة)\x0a\x20\x20\x20\x20🖊️\x20*.مكت*\x20(بدء\x20مسابقة\x20الكتابة)\x0a\x20\x20\x20\x20🏁\x20*.سكت*\x20(إنهاء\x20مسابقة\x20الكتابة)\x0a\x20\x20\x20\x20🔒\x20*.مخفي*\x20(إرسال\x20رسالة\x20مخفية)\x0a\x20\x20\x20\x20❭↜\x20〚.تخفيض〛\x20(تخفيض\x20الرتبة)\x0a\x20\x20\x20\x20📝\x20*.تسجيل*\x20(تسجيل\x20مستخدم\x20جديد)\x0a\x20\x20\x20\x20📜\x20*.الألقاب*\x20(عرض\x20الألقاب)\x0a\x20\x20\x20\x20🗑️\x20*.حذف\x20لقب*\x20(حذف\x20لقب\x20مستخدم)\x0a\x20\x20\x20\x20╰──────────⳹','gamemenu':'✦\x20───『\x20*العاب*\x20』───\x20⚝\x0a\x20\x20\x20\x20🎴\x20*.ملصق*\x20<اسم|صانع>\x0a\x20\x20\x20\x20📊\x20*.توب*\x20\x0a\x20\x20\x20\x20❌\x20*.اكس-او*\x20(لعبة\x20XO)\x0a\x20\x20\x20\x20╰──────────⳹','groupmenu':_0x14e21e(0x1dd),'usermenu':_0x14e21e(0x1ee)},botname=_0x14e21e(0x205),handler=async(_0xc35eaf,{conn:_0x3c8b9f,command:_0x13c250,text:_0x2d7a16,args:_0x7619cf,usedPrefix:_0x556b10})=>{const _0x23a863=_0x14e21e;try{let _0x17168f=global['db'][_0x23a863(0x20d)]['users'],_0x5d2f56=_0x17168f[_0xc35eaf['sender']],_0x180b7d='@'+_0xc35eaf[_0x23a863(0x1d6)][_0x23a863(0x20f)]('@')[0x0],_0x25cced=global[_0x23a863(0x204)]['self']?_0x23a863(0x1ea):_0x23a863(0x216),{age:_0x2fcceb,exp:_0x1168bd,limit:_0x1605ed,level:_0x281145,role:_0x1fb5d8,registered:_0x8dc2ad,credit:_0x11f309}=_0x17168f[_0xc35eaf[_0x23a863(0x1d6)]],{min:_0x15ec0d,xp:_0x46c6a7,max:_0x2fd965}=xpRange(_0x281145,global[_0x23a863(0x200)]),_0x606997=await _0x3c8b9f[_0x23a863(0x212)](_0xc35eaf[_0x23a863(0x1d6)]),_0x20132f=_0x17168f[_0xc35eaf['sender']]['premiumTime'],_0x351547=''+(_0x20132f>0x0?_0x23a863(0x1fb):_0x23a863(0x209)),_0x3c8d3c=_0x4350ab[_0x23a863(0x217)](),_0x30299a=''+ucapan(),_0x3bfe5d=process[_0x23a863(0x1e3)]()*0x3e8,_0x121df7;process['send']&&(process[_0x23a863(0x1f2)](_0x23a863(0x1e3)),_0x121df7=await new Promise(_0x2f44a2=>{const _0x5078af=_0x23a863;process['once'](_0x5078af(0x1fc),_0x2f44a2),setTimeout(_0x2f44a2,0x3e8);})*0x3e8);let _0x2496ef=clockString(_0x121df7),_0x49d6c0=clockString(_0x3bfe5d),_0x59401b=Object['values'](global['plugins'])[_0x23a863(0x1ec)](_0x1f75a9=>_0x1f75a9[_0x23a863(0x20b)]&&_0x1f75a9[_0x23a863(0x1d7)])[_0x23a863(0x208)],_0x209cdb=Object['keys'](_0x17168f)['length'];_0x3c8b9f[_0x23a863(0x1f7)]=_0x3c8b9f[_0x23a863(0x1f7)]?_0x3c8b9f[_0x23a863(0x1f7)]:{},global['fcontact']={'key':{'fromMe':![],'participant':_0x23a863(0x1f4),'remoteJid':_0x23a863(0x214)},'message':{'contactMessage':{'displayName':''+_0x606997,'vcard':'BEGIN:VCARD\x0aVERSION:3.0\x0aN:;a,;;;\x0aFN:'+_0x606997+_0x23a863(0x1f0)+_0xc35eaf['sender'][_0x23a863(0x20f)]('@')[0x0]+':'+_0xc35eaf['sender'][_0x23a863(0x20f)]('@')[0x0]+'\x0aitem1.X-ABLabel:Ponsel\x0aEND:VCARD'}}};const _0x2e558e='\x0a\x20\x20\x20\x20\x20\x20\x20\x20'+botname+_0x23a863(0x215)+_0x606997+_0x23a863(0x1e2)+_0x30299a+_0x23a863(0x20a);await _0x3c8b9f[_0x23a863(0x1fe)](_0xc35eaf[_0x23a863(0x1d4)],{'react':{'text':'🌀','key':_0xc35eaf[_0x23a863(0x1f6)]}});const {result:_0x32457b,key:_0x27a198,timeout:_0xb6176}=await _0x3c8b9f[_0x23a863(0x1fe)](_0xc35eaf[_0x23a863(0x1d4)],{'video':{'url':menuvid},'caption':_0x2e558e[_0x23a863(0x1d5)](),'gifPlayback':!![],'gifAttribution':0x0},{'quoted':fcontact});_0x3c8b9f[_0x23a863(0x1f7)][_0xc35eaf[_0x23a863(0x1d6)]]={'result':_0x32457b,'key':_0x27a198,'timeout':setTimeout(()=>{const _0x2edec3=_0x23a863;_0x3c8b9f[_0x2edec3(0x1fe)](_0xc35eaf[_0x2edec3(0x1d4)],{'delete':_0x27a198}),delete _0x3c8b9f[_0x2edec3(0x1f7)][_0xc35eaf['sender']];},0x96*0x3e8)};}catch(_0x5436b8){console[_0x23a863(0x1fd)](_0x5436b8),_0xc35eaf['reply'](_0x23a863(0x1ff));}};handler['before']=async(_0x2d6d3e,{conn:_0x540702})=>{const _0xdca5f8=_0x14e21e;try{_0x540702['gurumenu']=_0x540702['gurumenu']?_0x540702[_0xdca5f8(0x1f7)]:{};if(_0x2d6d3e['isBaileys']||!(_0x2d6d3e[_0xdca5f8(0x1d6)]in _0x540702[_0xdca5f8(0x1f7)]))return;const {result:_0x52b553,key:_0xe982a6,timeout:_0x222021}=_0x540702[_0xdca5f8(0x1f7)][_0x2d6d3e[_0xdca5f8(0x1d6)]];if(!_0x2d6d3e[_0xdca5f8(0x1eb)]||_0x2d6d3e[_0xdca5f8(0x1eb)]['id']!==_0xe982a6['id']||!_0x2d6d3e[_0xdca5f8(0x1dc)])return;const _0x5a741=_0x2d6d3e['text'][_0xdca5f8(0x1d5)](),_0x470a63=async _0x95f91e=>{const _0x5548e2=_0xdca5f8;await _0x540702[_0x5548e2(0x1fe)](_0x2d6d3e[_0x5548e2(0x1d4)],{'image':{'url':_0x5548e2(0x1df)},'caption':menus[_0x95f91e]},{'quoted':fcontact});},_0x212c36={'1':_0xdca5f8(0x207),'2':'gamemenu','3':_0xdca5f8(0x1f5),'4':_0xdca5f8(0x1de)};_0x212c36[_0x5a741]?await _0x470a63(_0x212c36[_0x5a741]):_0x2d6d3e['reply'](_0xdca5f8(0x1e6)),await _0x540702[_0xdca5f8(0x1fe)](_0x2d6d3e[_0xdca5f8(0x1d4)],{'react':{'text':'👍','key':_0x2d6d3e[_0xdca5f8(0x1f6)]}});}catch(_0x40ae50){console[_0xdca5f8(0x1fd)](_0x40ae50),_0x2d6d3e[_0xdca5f8(0x20e)]('An\x20error\x20occurred\x20while\x20processing\x20your\x20request.');}},handler[_0x14e21e(0x20b)]=[_0x14e21e(0x206)],handler[_0x14e21e(0x1d7)]=[_0x14e21e(0x203)],handler[_0x14e21e(0x20c)]=['menu',_0x14e21e(0x1e0)],handler[_0x14e21e(0x1f1)]=!![];export default handler;function pickRandom(_0x448070){const _0x530349=_0x14e21e;return _0x448070[Math[_0x530349(0x218)](Math[_0x530349(0x1ed)]()*_0x448070['length'])];}function clockString(_0x157e91){const _0x3a6229=_0x14e21e;let _0x374986=isNaN(_0x157e91)?'--':Math['floor'](_0x157e91/0x36ee80),_0x54224b=isNaN(_0x157e91)?'--':Math['floor'](_0x157e91/0xea60)%0x3c,_0x62bc94=isNaN(_0x157e91)?'--':Math['floor'](_0x157e91/0x3e8)%0x3c;return[_0x374986,_0x3a6229(0x1d2),_0x54224b,_0x3a6229(0x1f9),_0x62bc94,_0x3a6229(0x1e7)]['map'](_0xcaf736=>_0xcaf736[_0x3a6229(0x1e8)]()[_0x3a6229(0x1db)](0x2,0x0))[_0x3a6229(0x1f8)]('');}function ucapan(){const _0x28ae0e=_0x14e21e,_0x3a755f=_0x5c48f4['tz'](_0x28ae0e(0x1e4))[_0x28ae0e(0x213)]('HH');if(_0x3a755f>=0x4&&_0x3a755f<0xa)return _0x28ae0e(0x1e9);if(_0x3a755f>=0xa&&_0x3a755f<0xf)return _0x28ae0e(0x1d9);if(_0x3a755f>=0xf&&_0x3a755f<0x12)return _0x28ae0e(0x1d8);return _0x28ae0e(0x1ef);}
+import { promises as fsPromises, readFileSync } from "fs";
+import { join } from "path";
+import { xpRange } from "../lib/levelling.js";
+import moment from "moment-timezone";
+import os from "os";
+
+// Define menus
+const menus = {
+    'adminsmenu': "✦ ───『 *المشرفين* 』─── 👾\n    👑 *.ترقية* (ترقية مستخدم)\n    ❌ *.طرد* (طرد مستخدم)\n    🗑️ *.حذف* (إزالة أو حذف)\n    🔗 *.رابط* (عرض رابط المجموعة)\n    🖊️ *.مكت* (بدء مسابقة الكتابة)\n    🏁 *.سكت* (إنهاء مسابقة الكتابة)\n    🔒 *.مخفي* (إرسال رسالة مخفية)\n    ❭↜ 〚.تخفيض〛 (تخفيض الرتبة)\n    📝 *.تسجيل* (تسجيل مستخدم جديد)\n    📜 *.الألقاب* (عرض الألقاب)\n    🗑️ *.حذف لقب* (حذف لقب مستخدم)\n    ╰──────────⳹",
+    'gamemenu': "✦ ───『 *العاب* 』─── ⚝\n    🎴 *.ملصق* <اسم|صانع>\n    📊 *.توب* \n    ❌ *.اكس-او* (لعبة XO)\n    ╰──────────⳹",
+    'groupmenu': "✦ ───『 *قائمة القروب* 』─── ⚝\n    🔒 *.قفل* (قفل المجموعة)\n    🔓 *.فتح* (فتح المجموعة)\n    🖼️ *.تغيير صورة* (تغيير صورة المجموعة)\n    ╰──────────⳹",
+    'usermenu': "✦ ───『 *قائمة المستخدمين* 』─── 🎭\n    👤 *.لقبي* (عرض لقبك)\n    🎉 *.تحسين* (تحسين)\n    🖼️ *.لصورة* (لصورة)\n    📹 *.لفيد* (لفيديو)\n    📜 *.لقبه* (عرض لقب المستخدم)\n    ╰──────────⳹"
+};
+
+// Define bot name
+const botname = "Ｎｉｎｏ－Ｂｏｔ";
+
+// Main handler function
+const handler = async (m, { conn, command, text, args, usedPrefix }) => {
+    try {
+        let glb = global.db.data.users;
+        let tag = `@${m.sender.split("@")[0]}`;
+        let name = await conn.getName(m.sender);
+        let ucpn = `${ucapan()}`;
+
+        const infoText = `
+${botname} 
+Hi ${name}, Senpai!
+
+*${ucpn}* 
+
+乂───『 *U S E R*』───乂
+⛥ *Rank:* User
+⛥ *Owner:* Elta/+96176337375
+╰──────────⳹
+
+╭───────⳹
+│ *1.* 👾 قائمة المشرفين
+│ *2.* ⚝ قائمة الألعاب
+│ *3.* ⚝ قائمة القروب
+│ *4.* 🎭 قائمة المستخدمين
+╰───────⳹
+
+Reply with a number to view the corresponding menu.
+`;
+
+        // React to the message
+        await conn.sendMessage(m.chat, { react: { text: '🌀', key: m.key } });
+
+        const { result, key, timeout } = await conn.sendMessage(
+            m.chat,
+            { text: infoText.trim() },
+            { quoted: m }
+        );
+
+        conn.gurumenu = conn.gurumenu || {};
+        conn.gurumenu[m.sender] = {
+            result,
+            key,
+            timeout: setTimeout(() => {
+                conn.sendMessage(m.chat, { delete: key });
+                delete conn.gurumenu[m.sender];
+            }, 150 * 1000),
+        };
+    } catch (err) {
+        console.error(err);
+        m.reply('An error occurred while processing your request.');
+    }
+};
+
+// Before handler function to catch user responses
+handler.before = async (m, { conn }) => {
+    try {
+        conn.gurumenu = conn.gurumenu || {};
+        if (m.isBaileys || !(m.sender in conn.gurumenu)) return;
+        const { result, key, timeout } = conn.gurumenu[m.sender];
+        if (!m.quoted || m.quoted.id !== key.id || !m.text) return;
+
+        const choice = m.text.trim();
+        const menuOptions = {
+            "1": "adminsmenu",
+            "2": "gamemenu",
+            "3": "groupmenu",
+            "4": "usermenu"
+        };
+
+        const sendMenu = async (menuName) => {
+            await conn.sendMessage(m.chat, {
+                text: menus[menuName]
+            }, { quoted: m });
+        };
+
+        if (menuOptions[choice]) {
+            await sendMenu(menuOptions[choice]);
+            await conn.sendMessage(m.chat, { react: { text: '👍', key: m.key } });
+        } else {
+            await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
+            m.reply('❌ Invalid choice. Please reply with a valid number.');
+        }
+    } catch (err) {
+        console.error(err);
+        m.reply('An error occurred while processing your request.');
+    }
+};
+
+// Register the handler
+handler.help = ["menu"];
+handler.tags = ["main"];
+handler.command = ['menu', 'اوامر'];
+handler.limit = true;
+
+export default handler;
+
+// Utility functions
+function clockString(ms) {
+    let h = isNaN(ms) ? "--" : Math.floor(ms / 3600000);
+    let m = isNaN(ms) ? "--" : Math.floor(ms / 60000) % 60;
+    let s = isNaN(ms) ? "--" : Math.floor(ms / 1000) % 60;
+    return [h, " H ", m, " M ", s, " S "].map(v => v.toString().padStart(2, 0)).join("");
+}
+
+function ucapan() {
+    const time = moment.tz("Asia/Kolkata").format("HH");
+    if (time >= 4 && time < 10) return "Good Morning 🌄";
+    if (time >= 10 && time < 15) return "Good Afternoon ☀️";
+    if (time >= 15 && time < 18) return "Good Afternoon 🌇";
+    return "Good Night 🌙";
+}
